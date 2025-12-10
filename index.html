@@ -9,47 +9,116 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png" type="image/png">
 </head>
 <body>
+    <!-- Музыкальный плеер (скрыт, но играет) -->
+    <div class="music-player" id="musicPlayer">
+        <audio id="backgroundMusic" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/10/31/audio_d7d5e7a418.mp3?filename=cyberpunk-177113.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+        <div class="music-controls">
+            <button id="playBtn"><i class="fas fa-play"></i></button>
+            <button id="pauseBtn"><i class="fas fa-pause"></i></button>
+            <button id="stopBtn"><i class="fas fa-stop"></i></button>
+            <span class="music-title">Cyberpunk Theme</span>
+            <div class="volume-control">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.3">
+            </div>
+        </div>
+    </div>
+
     <div class="guns-lol-container">
+        <!-- Шапка как на guns.lol -->
         <div class="profile-header">
             <div class="profile-badge">PRO</div>
-            <h1 class="profile-title">ImNotGrand"</h1>
+            <h1 class="profile-title">ITZ "GRAND"</h1>
             <div class="profile-subtitle">GrandProfile.ru</div>
         </div>
 
+        <!-- Основной контент -->
         <div class="content-wrapper">
+            <!-- Левая колонка -->
             <div class="left-column">
                 <div class="info-card">
-                    <h3 class="card-title"><i class="fas fa-user"></i> ОБО МНЕ</h3>
+                    <h3 class="card-title">
+                        <i class="fas fa-user"></i> ОБО МНЕ
+                    </h3>
                     <div class="card-content">
                         <p class="description">Гранд - Майнкрафт - кс2 player, так-же технический администратор.</p>
+                        
                         <div class="status-indicator">
                             <div class="status-dot online"></div>
                             <span class="status-text">В сети</span>
                         </div>
                     </div>
                 </div>
+
+                <div class="info-card">
+                    <h3 class="card-title">
+                        <i class="fas fa-gamepad"></i> АКТИВНОСТЬ
+                    </h3>
+                    <div class="card-content">
+                        <div class="game-item">
+                            <div class="game-icon">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <div class="game-info">
+                                <div class="game-name">Minecraft</div>
+                                <div class="game-status">Играет сейчас</div>
+                            </div>
+                            <div class="game-time">2ч 45м</div>
+                        </div>
+                        
+                        <div class="game-item">
+                            <div class="game-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <div class="game-info">
+                                <div class="game-name">Counter-Strike 2</div>
+                                <div class="game-status">Недавно играл</div>
+                            </div>
+                            <div class="game-time">5ч 20м</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- Центральная колонка -->
             <div class="center-column">
                 <div class="clan-box">
-                    <div class="clan-header"><i class="fas fa-users"></i> ИНФОРМАЦИЯ О КЛАНЕ</div>
+                    <div class="clan-header">
+                        <i class="fas fa-users"></i>
+                        <span>ИНФОРМАЦИЯ О КЛАНЕ</span>
+                    </div>
+                    
                     <div class="clan-content">
                         <div class="clan-row">
                             <span class="clan-label">Clan ➨</span>
                             <span class="clan-value clan-main">SNY</span>
                             <span class="clan-arrow"><i class="fas fa-arrow-down"></i></span>
                         </div>
+                        
                         <div class="clan-row leader-row">
                             <span class="clan-label">Leader ➨</span>
                             <span class="clan-value">Dark</span>
                             <span class="clan-star"><i class="fas fa-star"></i></span>
                         </div>
+                        
                         <div class="clan-row deputy-row">
                             <span class="clan-label">Deputy ➨</span>
                             <span class="clan-value">Grand</span>
                             <span class="clan-arrow-up"><i class="fas fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                    
+                    <div class="clan-footer">
+                        <div class="clan-stats">
+                            <span>Участников: 12</span>
+                            <span>•</span>
+                            <span>Основан: 2023</span>
                         </div>
                     </div>
                 </div>
@@ -57,29 +126,131 @@
                 <div class="friends-section">
                     <h3><i class="fab fa-discord"></i> ЛУЧШИЙ ДРУГ</h3>
                     <div class="friend-item">
-                        <div class="friend-avatar"><i class="fas fa-user-secret"></i></div>
+                        <div class="friend-avatar">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
                         <div class="friend-info">
-                            <div class="friend-name">@darkerd1</div>
-                            <div class="friend-status">Друзья 2+ года</div>
+                            <div class="friend-name copy-text" data-text="@darkerd1">@darkerd1</div>
+                            <div class="friend-status">Нажми, чтобы скопировать</div>
+                        </div>
+                        <button class="copy-btn" data-text="@darkerd1">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая колонка -->
+            <div class="right-column">
+                <div class="join-clan-card">
+                    <div class="join-header">
+                        <i class="fas fa-door-open"></i>
+                        <h3>ВСТУПЛЕНИЕ В КЛАН</h3>
+                    </div>
+                    <div class="join-body">
+                        <p>По вопросам вступления в клан <strong>SNY</strong> обращайтесь к лидеру:</p>
+                        
+                        <div class="contact-box">
+                            <div class="contact-info">
+                                <i class="fab fa-discord"></i>
+                                <span class="discord-tag copy-text" data-text="@darkerd1">@darkerd1</span>
+                            </div>
+                            <button class="contact-copy-btn" data-text="@darkerd1">
+                                <i class="fas fa-copy"></i> Скопировать
+                            </button>
+                        </div>
+                        
+                        <div class="requirements">
+                            <h4><i class="fas fa-list-check"></i> Требования:</h4>
+                            <ul>
+                                <li>Возраст 16+</li>
+                                <li>Опыт игры в Minecraft/CS2</li>
+                                <li>Активность 10+ часов в неделю</li>
+                                <li>Голосовая связь Discord</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="join-footer">
+                            <div class="join-button" id="joinClanBtn">
+                                <i class="fas fa-paper-plane"></i>
+                                Подать заявку
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <h3><i class="fas fa-chart-line"></i> СТАТИСТИКА</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">832,783</div>
+                            <div class="stat-label">UID</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">127</div>
+                            <div class="stat-label">Часов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">Проекта</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">98%</div>
+                            <div class="stat-label">Рейтинг</div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="right-column">
-                <div class="offer-card">
-                    <div class="offer-header">
-                        <i class="fas fa-briefcase"></i>
-                        <h3>ГОТОВ К СОТРУДНИЧЕСТВУ</h3>
-                    </div>
-                    <div class="offer-body">
-                        <p>Встану на проект с зп от <span class="salary">500р</span> в месяц.</p>
-                        <div class="contact-button"><i class="fas fa-envelope"></i> Связаться</div>
-                    </div>
+        <!-- Футер -->
+        <div class="profile-footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-fire"></i>
+                    GrandProfile.ru
+                </div>
+                <div class="music-toggle" id="musicToggle">
+                    <i class="fas fa-music"></i> Музыка
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-steam"></i></a>
+                </div>
+                <div class="footer-copy">
+                    © 2024 ITZ "GRAND". Все права защищены.
                 </div>
             </div>
         </div>
     </div>
-</body>
 
+    <!-- Уведомление о копировании -->
+    <div class="notification" id="copyNotification">
+        <i class="fas fa-check"></i> Скопировано: <span id="copiedText"></span>
+    </div>
+
+    <!-- Модальное окно заявки -->
+    <div class="modal-overlay" id="applicationModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-file-signature"></i> Заявка в клан SNY</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Заявка отправлена лидеру клана <strong>@darkerd1</strong></p>
+                <p>Ожидайте ответа в Discord в течение 24 часов.</p>
+                <div class="modal-icon">
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" id="closeModal">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
