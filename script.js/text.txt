@@ -1,0 +1,12 @@
+// ===== МУЗЫКАЛЬНЫЙ ПЛЕЕР =====
+const audio = document.getElementById('backgroundMusic');
+const playBtn = document.getElementById('playBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const stopBtn = document.getElementById('stopBtn');
+const volumeSlider = document.getElementById('volumeSlider');
+const musicToggle = document.getElementById('musicToggle');
+const musicPlayer = document.querySelector('.music-player');
+
+// Автовоспроизведение музыки (с разрешения пользователя)
+document.addEventListener('DOMContentLoaded', function() {
+    // Пробуем запустить музы
