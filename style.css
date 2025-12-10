@@ -24,6 +24,67 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     backdrop-filter: blur(10px);
+    position: relative;
+}
+
+/* ===== МУЗЫКАЛЬНЫЙ ПЛЕЕР ===== */
+.music-player {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(20, 20, 30, 0.9);
+    border-radius: 10px;
+    padding: 12px 18px;
+    z-index: 1000;
+    border: 1px solid #444466;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    min-width: 300px;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.music-controls button {
+    background: rgba(139, 0, 0, 0.5);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-controls button:hover {
+    background: #8b0000;
+    transform: scale(1.1);
+}
+
+.music-title {
+    flex-grow: 1;
+    color: #a0a0c0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #8b0000;
+}
+
+#volumeSlider {
+    width: 80px;
+    cursor: pointer;
 }
 
 /* ===== ШАПКА ===== */
@@ -82,10 +143,17 @@ body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
+    .music-player {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin: 0 auto 20px;
+        width: 90%;
+    }
 }
 
 /* ===== КАРТОЧКИ ===== */
-.info-card, .clan-box, .offer-card, .stats-card {
+.info-card, .clan-box, .join-clan-card, .stats-card {
     background: rgba(25, 25, 35, 0.9);
     border-radius: 12px;
     border: 1px solid #333344;
@@ -94,7 +162,7 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.info-card:hover, .clan-box:hover, .offer-card:hover, .stats-card:hover {
+.info-card:hover, .clan-box:hover, .join-clan-card:hover, .stats-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     border-color: #444466;
@@ -134,6 +202,13 @@ body {
 .status-dot.online {
     background: #00cc00;
     box-shadow: 0 0 10px #00cc00;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
 .status-text {
@@ -342,6 +417,29 @@ body {
     color: #ffffff;
     font-size: 1.2rem;
     margin-bottom: 5px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.friend-name:hover {
+    color: #7289da;
+}
+
+.copy-text {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.copy-text::after {
+    content: '📋';
+    margin-left: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.copy-text:hover::after {
+    opacity: 1;
 }
 
 .friend-status {
@@ -349,94 +447,160 @@ body {
     font-size: 0.95rem;
 }
 
-.friend-message {
+.copy-btn {
     width: 45px;
     height: 45px;
     background: rgba(114, 137, 218, 0.2);
+    border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #7289da;
     font-size: 1.2rem;
-    text-decoration: none;
+    cursor: pointer;
     transition: all 0.3s;
 }
 
-.friend-message:hover {
+.copy-btn:hover {
     background: #7289da;
     color: white;
     transform: scale(1.1);
 }
 
-/* ===== ПРЕДЛОЖЕНИЕ ===== */
-.offer-card {
-    background: rgba(0, 30, 0, 0.2);
-    border: 2px solid #006600;
+/* ===== КАРТОЧКА ВСТУПЛЕНИЯ ===== */
+.join-clan-card {
+    background: rgba(0, 30, 60, 0.2);
+    border: 2px solid #0066cc;
 }
 
-.offer-header {
+.join-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #00cc00;
+    color: #0099ff;
     margin-bottom: 25px;
     font-family: 'Roboto Mono', monospace;
 }
 
-.offer-body {
-    color: #c0e0c0;
+.join-body {
+    color: #c0e0ff;
     line-height: 1.7;
 }
 
-.salary {
-    color: #ffff00;
-    font-weight: bold;
-    font-size: 1.4rem;
-    text-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+.join-body p {
+    margin-bottom: 20px;
 }
 
-.skills-list {
+.contact-box {
+    background: rgba(0, 60, 120, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #0088ff;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-info i {
+    color: #7289da;
+    font-size: 1.5rem;
+}
+
+.discord-tag {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-copy-btn {
+    background: linear-gradient(90deg, #7289da, #4a5fa8);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.contact-copy-btn:hover {
+    background: linear-gradient(90deg, #4a5fa8, #7289da);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(114, 137, 218, 0.3);
+}
+
+.requirements {
     margin: 25px 0;
 }
 
-.skill-tag {
-    background: rgba(0, 100, 0, 0.3);
-    color: #80ff80;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    border: 1px solid #008800;
+.requirements h4 {
+    color: #00ccff;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.offer-footer {
+.requirements ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.requirements li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    color: #a0d0ff;
+}
+
+.requirements li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #00cc00;
+    font-weight: bold;
+}
+
+.join-footer {
     margin-top: 25px;
 }
 
-.contact-button {
-    display: inline-flex;
+.join-button {
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    background: linear-gradient(90deg, #00cc00, #009900);
+    gap: 12px;
+    background: linear-gradient(90deg, #0099ff, #0066cc);
     color: white;
-    padding: 15px 30px;
+    padding: 18px 30px;
     border-radius: 10px;
     font-weight: bold;
     text-decoration: none;
     transition: all 0.3s;
     cursor: pointer;
-    width: 100%;
     text-align: center;
+    font-size: 1.1rem;
+    border: none;
+    width: 100%;
 }
 
-.contact-button:hover {
-    background: linear-gradient(90deg, #00ff00, #00cc00);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 255, 0, 0.2);
+.join-button:hover {
+    background: linear-gradient(90deg, #00ccff, #0099ff);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 153, 255, 0.3);
 }
 
 /* ===== СТАТИСТИКА ===== */
@@ -504,6 +668,22 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
+.music-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #8b0000;
+    cursor: pointer;
+    padding: 8px 16px;
+    background: rgba(139, 0, 0, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.music-toggle:hover {
+    background: rgba(139, 0, 0, 0.3);
+}
+
 .footer-links {
     display: flex;
     gap: 25px;
@@ -536,6 +716,130 @@ body {
     margin-top: 10px;
 }
 
+/* ===== УВЕДОМЛЕНИЕ О КОПИРОВАНИИ ===== */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0, 150, 0, 0.9);
+    color: white;
+    padding: 18px 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1001;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.notification i {
+    color: #00ff00;
+    font-size: 1.3rem;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal {
+    background: rgba(20, 20, 30, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    border: 2px solid #8b0000;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    color: #ff6666;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: #ff6666;
+}
+
+.modal-body {
+    text-align: center;
+    color: #b0b0c0;
+    line-height: 1.7;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+}
+
+.modal-icon {
+    font-size: 4rem;
+    color: #ffaa00;
+    margin: 25px 0;
+    animation: pulse 2s infinite;
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.modal-btn {
+    background: linear-gradient(90deg, #8b0000, #ff4444);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+}
+
+.modal-btn:hover {
+    background: linear-gradient(90deg, #ff4444, #8b0000);
+    transform: translateY(-3px);
+}
+
 /* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 768px) {
     .content-wrapper {
@@ -562,5 +866,21 @@ body {
     
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .contact-box {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .friend-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .friend-avatar {
+        margin-right: 0;
     }
 }
