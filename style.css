@@ -1,0 +1,566 @@
+/* ===== ОСНОВНЫЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.guns-lol-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(15, 15, 25, 0.85);
+    border-radius: 16px;
+    border: 1px solid #2a2a3e;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+/* ===== ШАПКА ===== */
+.profile-header {
+    background: linear-gradient(90deg, #8b0000 0%, #5a0000 50%, #8b0000 100%);
+    padding: 30px 40px;
+    text-align: center;
+    position: relative;
+    border-bottom: 3px solid #ff4444;
+}
+
+.profile-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #ffaa00, #ff7700);
+    color: #000;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(255, 119, 0, 0.3);
+}
+
+.profile-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 3.2rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.profile-subtitle {
+    font-size: 1.2rem;
+    color: #cccccc;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+/* ===== СЕТКА КОНТЕНТА ===== */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 25px;
+    padding: 30px;
+}
+
+@media (max-width: 1024px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ===== КАРТОЧКИ ===== */
+.info-card, .clan-box, .offer-card, .stats-card {
+    background: rgba(25, 25, 35, 0.9);
+    border-radius: 12px;
+    border: 1px solid #333344;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.info-card:hover, .clan-box:hover, .offer-card:hover, .stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: #444466;
+}
+
+.card-title {
+    color: #ff6666;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* ===== КАРТОЧКА "ОБО МНЕ" ===== */
+.description {
+    color: #b0b0c0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.status-dot.online {
+    background: #00cc00;
+    box-shadow: 0 0 10px #00cc00;
+}
+
+.status-text {
+    color: #a0d0a0;
+    font-size: 0.95rem;
+}
+
+/* ===== АКТИВНОСТЬ ===== */
+.game-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: rgba(40, 40, 55, 0.6);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid #8b0000;
+}
+
+.game-item:last-child {
+    margin-bottom: 0;
+}
+
+.game-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(139, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: #ff6666;
+}
+
+.game-info {
+    flex-grow: 1;
+}
+
+.game-name {
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.game-status {
+    font-size: 0.9rem;
+    color: #a0a0c0;
+}
+
+.game-time {
+    color: #ffaa00;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* ===== КЛАН ===== */
+.clan-box {
+    background: rgba(10, 10, 20, 0.95);
+    border: 2px solid #333344;
+    position: relative;
+    overflow: hidden;
+}
+
+.clan-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8b0000, #ff4444, #8b0000);
+}
+
+.clan-header {
+    color: #ffaa00;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.clan-content {
+    margin: 25px 0;
+}
+
+.clan-row {
+    display: flex;
+    align-items: center;
+    padding: 18px 15px;
+    margin-bottom: 12px;
+    background: rgba(30, 30, 45, 0.7);
+    border-radius: 8px;
+    border: 1px solid #2a2a3e;
+    transition: all 0.3s;
+}
+
+.clan-row:hover {
+    background: rgba(40, 40, 60, 0.8);
+    border-color: #444466;
+}
+
+.clan-label {
+    color: #a0a0c0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.1rem;
+    width: 120px;
+}
+
+.clan-value {
+    flex-grow: 1;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.clan-main {
+    color: #ff6666;
+}
+
+.clan-arrow, .clan-arrow-up, .clan-star {
+    font-size: 1.3rem;
+    margin-left: 15px;
+}
+
+.clan-arrow {
+    color: #ff4444;
+}
+
+.clan-arrow-up {
+    color: #00cc00;
+}
+
+.clan-star {
+    color: #ffaa00;
+}
+
+.leader-row {
+    border-left: 5px solid #ffaa00;
+    background: rgba(255, 170, 0, 0.05);
+}
+
+.deputy-row {
+    border-left: 5px solid #00cc00;
+    background: rgba(0, 204, 0, 0.05);
+}
+
+.clan-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px dashed #333344;
+}
+
+.clan-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: #8888aa;
+    font-size: 0.95rem;
+}
+
+/* ===== ДРУЗЬЯ ===== */
+.friends-section {
+    margin-top: 25px;
+}
+
+.friends-section h3 {
+    color: #7289da;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    background: rgba(30, 30, 50, 0.7);
+    border-radius: 10px;
+    border: 1px solid #333355;
+}
+
+.friend-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #7289da, #4a5fa8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-right: 18px;
+}
+
+.friend-info {
+    flex-grow: 1;
+}
+
+.friend-name {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.friend-status {
+    color: #a0a0c0;
+    font-size: 0.95rem;
+}
+
+.friend-message {
+    width: 45px;
+    height: 45px;
+    background: rgba(114, 137, 218, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7289da;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.friend-message:hover {
+    background: #7289da;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* ===== ПРЕДЛОЖЕНИЕ ===== */
+.offer-card {
+    background: rgba(0, 30, 0, 0.2);
+    border: 2px solid #006600;
+}
+
+.offer-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #00cc00;
+    margin-bottom: 25px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.offer-body {
+    color: #c0e0c0;
+    line-height: 1.7;
+}
+
+.salary {
+    color: #ffff00;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.skill-tag {
+    background: rgba(0, 100, 0, 0.3);
+    color: #80ff80;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #008800;
+}
+
+.offer-footer {
+    margin-top: 25px;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #00cc00, #009900);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.contact-button:hover {
+    background: linear-gradient(90deg, #00ff00, #00cc00);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 255, 0, 0.2);
+}
+
+/* ===== СТАТИСТИКА ===== */
+.stats-card {
+    text-align: center;
+}
+
+.stats-card h3 {
+    color: #ff6666;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat-item {
+    padding: 20px;
+    background: rgba(40, 40, 60, 0.6);
+    border-radius: 10px;
+    border: 1px solid #333355;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    margin-bottom: 8px;
+    text-shadow: 0 0 10px rgba(255, 100, 100, 0.3);
+}
+
+.stat-label {
+    color: #a0a0c0;
+    font-size: 0.95rem;
+}
+
+/* ===== ФУТЕР ===== */
+.profile-footer {
+    background: rgba(10, 10, 20, 0.95);
+    padding: 30px;
+    border-top: 2px solid #2a2a3e;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    color: #ff6666;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cccccc;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.footer-links a:hover {
+    background: #8b0000;
+    color: white;
+    transform: scale(1.1);
+}
+
+.footer-copy {
+    color: #666677;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 20px;
+    }
+    
+    .profile-title {
+        font-size: 2.2rem;
+    }
+    
+    .profile-header {
+        padding: 25px 20px;
+    }
+    
+    .clan-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .clan-label {
+        width: auto;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
